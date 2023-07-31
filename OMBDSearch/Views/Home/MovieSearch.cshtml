@@ -1,0 +1,26 @@
+﻿@model Movie
+
+<p>Please type in the title of the movie you want to search for</p>
+
+<form asp-action="MovieSearchForm" asp-controller="Home" method="POST">
+
+    <label for="">Search by Title</label>
+    <input type="text" name="Title" Id="Title">
+    <button type="submit">SEARCH</button>
+</form>
+
+@if (Model != null)
+{
+    <h1>@Model.Title</h1>
+    @if (!string.IsNullOrEmpty(@Model.Title))
+    {
+        <h1>@Model.Title</h1>
+        @Model.Year
+        
+        <img src="@Model.Poster" alt="Movie Poster" />
+    }
+    else
+    {
+        <p>No poster available</p>
+    }
+}
